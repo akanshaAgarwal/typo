@@ -22,7 +22,7 @@ dbfile = File.expand_path("../config/database.yml", __FILE__)
 # group :production do
 #   gem 'pg'
 # end
-gem 'pg'
+gem 'pg', '~> 0.10.0'
 
 source 'https://rubygems.org'
 ruby "1.9.3"
