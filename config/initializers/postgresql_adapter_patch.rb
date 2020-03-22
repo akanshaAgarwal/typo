@@ -1,4 +1,4 @@
-re 'active_record/connection_adapters/postgresql_adapter'
+require 'active_record/connection_adapters/postgresql_adapter'
 
 class ActiveRecord::ConnectionAdapters::PostgreSQLAdapter
   def set_standard_conforming_strings
