@@ -24136,3 +24136,795 @@ Rendered themes/bootstrap/views/articles/_article.html.erb (79.8ms)
 Missing partial /sidebar/content with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/home/ec2-user/environment/typo/themes/bootstrap/views", "/home/ec2-user/environment/typo/app/views", "/home/ec2-user/environment/typo/vendor/plugins/xml_sidebar/app/views", "/home/ec2-user/environment/typo/vendor/plugins/upload_progress/app/views", "/home/ec2-user/environment/typo/vendor/plugins/typo_textfilter_textile_and_markdown/app/views", "/home/ec2-user/environment/typo/vendor/plugins/typo_textfilter_textile/app/views", "/home/ec2-user/environment/typo/vendor/plugins/typo_textfilter_smartypants/app/views", "/home/ec2-user/environment/typo/vendor/plugins/typo_textfilter_none/app/views", "/home/ec2-user/environment/typo/vendor/plugins/typo_textfilter_markdown/app/views", "/home/ec2-user/environment/typo/vendor/plugins/typo_textfilter_lightbox/app/views", "/home/ec2-user/environment/typo/vendor/plugins/typo_textfilter_htmlfilter/app/views", "/home/ec2-user/environment/typo/vendor/plugins/typo_textfilter_flickr/app/views", "/home/ec2-user/environment/typo/vendor/plugins/typo_textfilter_code/app/views", "/home/ec2-user/environment/typo/vendor/plugins/typo_login_system/app/views", "/home/ec2-user/environment/typo/vendor/plugins/typo_converter/app/views", "/home/ec2-user/environment/typo/vendor/plugins/typo_avatar_gravatar/app/views", "/home/ec2-user/environment/typo/vendor/plugins/tag_sidebar/app/views", "/home/ec2-user/environment/typo/vendor/plugins/static_sidebar/app/views", "/home/ec2-user/environment/typo/vendor/plugins/search_sidebar/app/views", "/home/ec2-user/environment/typo/vendor/plugins/page_sidebar/app/views", "/home/ec2-user/environment/typo/vendor/plugins/meta_sidebar/app/views", "/home/ec2-user/environment/typo/vendor/plugins/livesearch_sidebar/app/views", "/home/ec2-user/environment/typo/vendor/plugins/filemanager/app/views", "/home/ec2-user/environment/typo/vendor/plugins/easy-ckeditor/app/views", "/home/ec2-user/environment/typo/vendor/plugins/dynamic_form/app/views", "/home/ec2-user/environment/typo/vendor/plugins/category_sidebar/app/views", "/home/ec2-user/environment/typo/vendor/plugins/calendar_date_select/app/views", "/home/ec2-user/environment/typo/vendor/plugins/authors_sidebar/app/views", "/home/ec2-user/environment/typo/vendor/plugins/archives_sidebar/app/views", "/home/ec2-user/environment/typo/vendor/plugins/amazon_sidebar/app/views", "/home/ec2-user/environment/typo/vendor/plugins/prototype_legacy_helper/app/views", "/home/ec2-user/environment/typo/vendor/plugins/localization/app/views", "/home/ec2-user/.rvm/gems/ruby-1.9.3-p551/gems/kaminari-0.14.1/app/views"
 Rendered themes/bootstrap/views/articles/index.html.erb within layouts/default (156.3ms)
 Completed 200 OK in 175ms (Views: 153.9ms | ActiveRecord: 10.2ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/ec2-user/environment/typo/config/environment.rb:5)
+TypoPlugins: just registered plugin [TypoPlugins::Gravatar] for :avatar target.
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/ec2-user/environment/typo/config/environment.rb:5)
+TypoPlugins: just registered plugin [TypoPlugins::Gravatar] for :avatar target.
+  [1m[36mSQL (2.0ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.3ms)[0m  SET client_min_messages TO 'warning'
+  [1m[36mSCHEMA (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.0ms)[0m  SET client_min_messages TO 'warning'
+  [1m[36mSQL (0.2ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mPK and serial sequence (35.3ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"articles_tags"'::regclass
+[0m
+  [1m[35mPK and custom sequence (4.9ms)[0m   SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"articles_tags"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+  [1m[36mSQL (8.5ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ AND schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (3.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (1.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mSET search_path TO public[0m
+  [1m[35mSQL (1.5ms)[0m  SHOW client_min_messages
+  [1m[36mSQL (0.1ms)[0m  [1mSET client_min_messages TO 'warning'[0m
+  [1m[35mSCHEMA (0.1ms)[0m  SET standard_conforming_strings = on
+  [1m[36mSQL (0.0ms)[0m  [1mSET client_min_messages TO 'warning'[0m
+  [1m[35mSQL (0.2ms)[0m  SET time zone 'UTC'
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TIME ZONE[0m
+  [1m[35mSQL (112.5ms)[0m  DROP DATABASE IF EXISTS "myapp_test"
+  [1m[36mSQL (0.1ms)[0m  [1mSET search_path TO public[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW client_min_messages
+  [1m[36mSQL (0.1ms)[0m  [1mSET client_min_messages TO 'warning'[0m
+  [1m[35mSCHEMA (0.1ms)[0m  SET standard_conforming_strings = on
+  [1m[36mSQL (0.0ms)[0m  [1mSET client_min_messages TO 'warning'[0m
+  [1m[35mSQL (0.2ms)[0m  SET time zone 'UTC'
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TIME ZONE[0m
+  [1m[35mSQL (434.6ms)[0m  CREATE DATABASE "myapp_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'warning'
+  [1m[36mSCHEMA (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.0ms)[0m  SET client_min_messages TO 'warning'
+  [1m[36mSQL (0.2ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (1.7ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'articles_tags'
+ AND schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (4.5ms)[0m  CREATE TABLE "articles_tags" ("article_id" integer, "tag_id" integer) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'blogs'
+ AND schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (7.8ms)[0m  CREATE TABLE "blogs" ("id" serial primary key, "settings" text, "base_url" character varying(255)) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'categories'
+ AND schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (6.6ms)[0m  CREATE TABLE "categories" ("id" serial primary key, "name" character varying(255), "position" integer, "permalink" character varying(255), "keywords" text, "description" text, "parent_id" integer) 
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW search_path[0m
+  [1m[35mSQL (1.3ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'categories'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mSQL (2.7ms)[0m  [1mCREATE INDEX "index_categories_on_permalink" ON "categories" ("permalink")[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'categorizations'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (3.8ms)[0m  [1mCREATE TABLE "categorizations" ("id" serial primary key, "article_id" integer, "category_id" integer, "is_primary" boolean) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'contents'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.8ms)[0m  [1mCREATE TABLE "contents" ("id" serial primary key, "type" character varying(255), "title" character varying(255), "author" character varying(255), "body" text, "extended" text, "excerpt" text, "created_at" timestamp, "updated_at" timestamp, "user_id" integer, "permalink" character varying(255), "guid" character varying(255), "text_filter_id" integer, "whiteboard" text, "name" character varying(255), "published" boolean DEFAULT 'f', "allow_pings" boolean, "allow_comments" boolean, "published_at" timestamp, "state" character varying(255), "parent_id" integer, "settings" text, "post_type" character varying(255) DEFAULT 'read') [0m
+  [1m[35mSQL (0.8ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'contents'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mSQL (5.4ms)[0m  [1mCREATE INDEX "index_contents_on_published" ON "contents" ("published")[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'contents'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mColumns for index index_contents_on_published on contents (0.7ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 18613
+ AND a.attnum IN (16)
+[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE INDEX "index_contents_on_text_filter_id" ON "contents" ("text_filter_id")
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'feedback'
+ AND schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (6.0ms)[0m  CREATE TABLE "feedback" ("id" serial primary key, "type" character varying(255), "title" character varying(255), "author" character varying(255), "body" text, "excerpt" text, "created_at" timestamp, "updated_at" timestamp, "user_id" integer, "guid" character varying(255), "text_filter_id" integer, "whiteboard" text, "article_id" integer, "email" character varying(255), "url" character varying(255), "ip" character varying(40), "blog_name" character varying(255), "published" boolean DEFAULT 'f', "published_at" timestamp, "state" character varying(255), "status_confirmed" boolean) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'feedback'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE INDEX "index_feedback_on_article_id" ON "feedback" ("article_id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'feedback'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_feedback_on_article_id on feedback (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 18628
+ AND a.attnum IN (13)
+  [1m[36mSQL (2.7ms)[0m  [1mCREATE INDEX "index_feedback_on_text_filter_id" ON "feedback" ("text_filter_id")[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'notifications'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (3.7ms)[0m  [1mCREATE TABLE "notifications" ("id" serial primary key, "content_id" integer, "user_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.4ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'page_caches'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (3.8ms)[0m  [1mCREATE TABLE "page_caches" ("id" serial primary key, "name" character varying(255)) [0m
+  [1m[35mSQL (0.8ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'page_caches'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mSQL (5.5ms)[0m  [1mCREATE INDEX "index_page_caches_on_name" ON "page_caches" ("name")[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'pings'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (3.7ms)[0m  [1mCREATE TABLE "pings" ("id" serial primary key, "article_id" integer, "url" character varying(255), "created_at" timestamp) [0m
+  [1m[35mSQL (0.6ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'pings'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mSQL (2.6ms)[0m  [1mCREATE INDEX "index_pings_on_article_id" ON "pings" ("article_id")[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'post_types'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.0ms)[0m  [1mCREATE TABLE "post_types" ("id" serial primary key, "name" character varying(255), "permalink" character varying(255), "description" character varying(255)) [0m
+  [1m[35mSQL (0.4ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'profiles'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.2ms)[0m  [1mCREATE TABLE "profiles" ("id" serial primary key, "label" character varying(255), "nicename" character varying(255), "modules" text) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'profiles_rights'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (0.8ms)[0m  [1mCREATE TABLE "profiles_rights" ("profile_id" integer, "right_id" integer) [0m
+  [1m[35mSQL (0.5ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'redirections'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (3.7ms)[0m  [1mCREATE TABLE "redirections" ("id" serial primary key, "content_id" integer, "redirect_id" integer) [0m
+  [1m[35mSQL (0.4ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'redirects'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.5ms)[0m  [1mCREATE TABLE "redirects" ("id" serial primary key, "from_path" character varying(255), "to_path" character varying(255), "origin" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.5ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'resources'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (8.1ms)[0m  [1mCREATE TABLE "resources" ("id" serial primary key, "size" integer, "filename" character varying(255), "mime" character varying(255), "created_at" timestamp, "updated_at" timestamp, "article_id" integer, "itunes_metadata" boolean, "itunes_author" character varying(255), "itunes_subtitle" character varying(255), "itunes_duration" integer, "itunes_summary" text, "itunes_keywords" character varying(255), "itunes_category" character varying(255), "itunes_explicit" boolean) [0m
+  [1m[35mSQL (0.7ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'rights'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.2ms)[0m  [1mCREATE TABLE "rights" ("id" serial primary key, "name" character varying(255), "description" character varying(255)) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'sidebars'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.1ms)[0m  [1mCREATE TABLE "sidebars" ("id" serial primary key, "active_position" integer, "config" text, "staged_position" integer, "type" character varying(255)) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'sitealizer'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.6ms)[0m  [1mCREATE TABLE "sitealizer" ("id" serial primary key, "path" character varying(255), "ip" character varying(255), "referer" character varying(255), "language" character varying(255), "user_agent" character varying(255), "created_at" timestamp, "created_on" date) [0m
+  [1m[35mSQL (0.7ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'tags'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (18.0ms)[0m  [1mCREATE TABLE "tags" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp, "display_name" character varying(255)) [0m
+  [1m[35mSQL (0.7ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'text_filters'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.6ms)[0m  [1mCREATE TABLE "text_filters" ("id" serial primary key, "name" character varying(255), "description" character varying(255), "markup" character varying(255), "filters" text, "params" text) [0m
+  [1m[35mSQL (0.4ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'triggers'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.7ms)[0m  [1mCREATE TABLE "triggers" ("id" serial primary key, "pending_item_id" integer, "pending_item_type" character varying(255), "due_at" timestamp, "trigger_method" character varying(255)) [0m
+  [1m[35mSQL (0.6ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'users'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (7.7ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "login" character varying(255), "password" character varying(255), "email" text, "name" text, "notify_via_email" boolean, "notify_on_new_articles" boolean, "notify_on_comments" boolean, "profile_id" integer, "remember_token" character varying(255), "remember_token_expires_at" timestamp, "text_filter_id" character varying(255) DEFAULT '1', "state" character varying(255) DEFAULT 'active', "last_connection" timestamp, "settings" text) [0m
+  [1m[35mSQL (0.4ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35mSQL (0.6ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'schema_migrations'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mSQL (3.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_info'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('104')
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('19')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('42')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('59')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('68')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('103')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('99')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('3')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('1')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('70')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('78')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('60')
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('35')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('50')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('82')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('41')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('39')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('73')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('40')[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('94')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('93')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('95')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('96')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('79')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('87')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('75')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('45')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('38')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('29')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('88')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('57')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('2')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('12')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('37')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('85')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('17')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('80')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('25')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('11')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('33')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('21')[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('8')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('30')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('15')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('69')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('49')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('4')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('14')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('53')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('18')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('90')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('76')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('81')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('36')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('24')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('67')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('47')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('31')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('26')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('43')
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('86')[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('54')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('77')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('89')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('91')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('58')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('13')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('5')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('32')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('71')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('102')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('64')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('72')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('16')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('7')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('51')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('6')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('52')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('55')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('27')
+  [1m[36mSQL (2.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('48')[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('74')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('22')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('63')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('23')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('34')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('61')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('62')
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('100')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('92')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('10')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('66')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('56')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('65')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('9')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('84')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('44')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('101')
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('98')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('83')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('97')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('46')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('28')[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/ec2-user/environment/typo/config/environment.rb:5)
+TypoPlugins: just registered plugin [TypoPlugins::Gravatar] for :avatar target.
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.2ms)[0m  SET client_min_messages TO 'warning'
+  [1m[36mSCHEMA (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.0ms)[0m  SET client_min_messages TO 'warning'
+  [1m[36mSQL (0.2ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mPK and serial sequence (2.0ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"articles_tags"'::regclass
+[0m
+  [1m[35mPK and custom sequence (1.0ms)[0m   SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"articles_tags"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+  [1m[36mSQL (1.2ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ AND schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mSET search_path TO public[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW client_min_messages
+  [1m[36mSQL (0.1ms)[0m  [1mSET client_min_messages TO 'warning'[0m
+  [1m[35mSCHEMA (0.1ms)[0m  SET standard_conforming_strings = on
+  [1m[36mSQL (0.0ms)[0m  [1mSET client_min_messages TO 'warning'[0m
+  [1m[35mSQL (0.2ms)[0m  SET time zone 'UTC'
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TIME ZONE[0m
+  [1m[35mSQL (106.0ms)[0m  DROP DATABASE IF EXISTS "myapp_test"
+  [1m[36mSQL (0.1ms)[0m  [1mSET search_path TO public[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW client_min_messages
+  [1m[36mSQL (0.1ms)[0m  [1mSET client_min_messages TO 'warning'[0m
+  [1m[35mSCHEMA (0.1ms)[0m  SET standard_conforming_strings = on
+  [1m[36mSQL (0.0ms)[0m  [1mSET client_min_messages TO 'warning'[0m
+  [1m[35mSQL (0.2ms)[0m  SET time zone 'UTC'
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TIME ZONE[0m
+  [1m[35mSQL (222.8ms)[0m  CREATE DATABASE "myapp_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'warning'
+  [1m[36mSCHEMA (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'warning'
+  [1m[36mSQL (0.2ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (1.7ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'articles_tags'
+ AND schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "articles_tags" ("article_id" integer, "tag_id" integer) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'blogs'
+ AND schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (7.2ms)[0m  CREATE TABLE "blogs" ("id" serial primary key, "settings" text, "base_url" character varying(255)) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'categories'
+ AND schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (8.0ms)[0m  CREATE TABLE "categories" ("id" serial primary key, "name" character varying(255), "position" integer, "permalink" character varying(255), "keywords" text, "description" text, "parent_id" integer) 
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW search_path[0m
+  [1m[35mSQL (1.3ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'categories'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mSQL (2.9ms)[0m  [1mCREATE INDEX "index_categories_on_permalink" ON "categories" ("permalink")[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'categorizations'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (3.9ms)[0m  [1mCREATE TABLE "categorizations" ("id" serial primary key, "article_id" integer, "category_id" integer, "is_primary" boolean) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'contents'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (7.1ms)[0m  [1mCREATE TABLE "contents" ("id" serial primary key, "type" character varying(255), "title" character varying(255), "author" character varying(255), "body" text, "extended" text, "excerpt" text, "created_at" timestamp, "updated_at" timestamp, "user_id" integer, "permalink" character varying(255), "guid" character varying(255), "text_filter_id" integer, "whiteboard" text, "name" character varying(255), "published" boolean DEFAULT 'f', "allow_pings" boolean, "allow_comments" boolean, "published_at" timestamp, "state" character varying(255), "parent_id" integer, "settings" text, "post_type" character varying(255) DEFAULT 'read') [0m
+  [1m[35mSQL (0.8ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'contents'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mSQL (2.8ms)[0m  [1mCREATE INDEX "index_contents_on_published" ON "contents" ("published")[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'contents'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mColumns for index index_contents_on_published on contents (0.6ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 18841
+ AND a.attnum IN (16)
+[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE INDEX "index_contents_on_text_filter_id" ON "contents" ("text_filter_id")
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'feedback'
+ AND schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (6.3ms)[0m  CREATE TABLE "feedback" ("id" serial primary key, "type" character varying(255), "title" character varying(255), "author" character varying(255), "body" text, "excerpt" text, "created_at" timestamp, "updated_at" timestamp, "user_id" integer, "guid" character varying(255), "text_filter_id" integer, "whiteboard" text, "article_id" integer, "email" character varying(255), "url" character varying(255), "ip" character varying(40), "blog_name" character varying(255), "published" boolean DEFAULT 'f', "published_at" timestamp, "state" character varying(255), "status_confirmed" boolean) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'feedback'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE INDEX "index_feedback_on_article_id" ON "feedback" ("article_id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'feedback'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_feedback_on_article_id on feedback (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 18856
+ AND a.attnum IN (13)
+  [1m[36mSQL (2.7ms)[0m  [1mCREATE INDEX "index_feedback_on_text_filter_id" ON "feedback" ("text_filter_id")[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'notifications'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (3.7ms)[0m  [1mCREATE TABLE "notifications" ("id" serial primary key, "content_id" integer, "user_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'page_caches'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (3.7ms)[0m  [1mCREATE TABLE "page_caches" ("id" serial primary key, "name" character varying(255)) [0m
+  [1m[35mSQL (0.7ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'page_caches'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mSQL (2.8ms)[0m  [1mCREATE INDEX "index_page_caches_on_name" ON "page_caches" ("name")[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'pings'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (4.0ms)[0m  [1mCREATE TABLE "pings" ("id" serial primary key, "article_id" integer, "url" character varying(255), "created_at" timestamp) [0m
+  [1m[35mSQL (0.6ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'pings'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mSQL (2.8ms)[0m  [1mCREATE INDEX "index_pings_on_article_id" ON "pings" ("article_id")[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'post_types'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.6ms)[0m  [1mCREATE TABLE "post_types" ("id" serial primary key, "name" character varying(255), "permalink" character varying(255), "description" character varying(255)) [0m
+  [1m[35mSQL (0.5ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'profiles'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.5ms)[0m  [1mCREATE TABLE "profiles" ("id" serial primary key, "label" character varying(255), "nicename" character varying(255), "modules" text) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'profiles_rights'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "profiles_rights" ("profile_id" integer, "right_id" integer) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'redirections'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (3.9ms)[0m  [1mCREATE TABLE "redirections" ("id" serial primary key, "content_id" integer, "redirect_id" integer) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'redirects'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.8ms)[0m  [1mCREATE TABLE "redirects" ("id" serial primary key, "from_path" character varying(255), "to_path" character varying(255), "origin" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.5ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'resources'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.9ms)[0m  [1mCREATE TABLE "resources" ("id" serial primary key, "size" integer, "filename" character varying(255), "mime" character varying(255), "created_at" timestamp, "updated_at" timestamp, "article_id" integer, "itunes_metadata" boolean, "itunes_author" character varying(255), "itunes_subtitle" character varying(255), "itunes_duration" integer, "itunes_summary" text, "itunes_keywords" character varying(255), "itunes_category" character varying(255), "itunes_explicit" boolean) [0m
+  [1m[35mSQL (0.4ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'rights'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.0ms)[0m  [1mCREATE TABLE "rights" ("id" serial primary key, "name" character varying(255), "description" character varying(255)) [0m
+  [1m[35mSQL (0.5ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'sidebars'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.4ms)[0m  [1mCREATE TABLE "sidebars" ("id" serial primary key, "active_position" integer, "config" text, "staged_position" integer, "type" character varying(255)) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'sitealizer'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.5ms)[0m  [1mCREATE TABLE "sitealizer" ("id" serial primary key, "path" character varying(255), "ip" character varying(255), "referer" character varying(255), "language" character varying(255), "user_agent" character varying(255), "created_at" timestamp, "created_on" date) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'tags'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (7.0ms)[0m  [1mCREATE TABLE "tags" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp, "display_name" character varying(255)) [0m
+  [1m[35mSQL (0.5ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'text_filters'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (6.2ms)[0m  [1mCREATE TABLE "text_filters" ("id" serial primary key, "name" character varying(255), "description" character varying(255), "markup" character varying(255), "filters" text, "params" text) [0m
+  [1m[35mSQL (0.4ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'triggers'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (5.9ms)[0m  [1mCREATE TABLE "triggers" ("id" serial primary key, "pending_item_id" integer, "pending_item_type" character varying(255), "due_at" timestamp, "trigger_method" character varying(255)) [0m
+  [1m[35mSQL (0.4ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'users'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (7.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "login" character varying(255), "password" character varying(255), "email" text, "name" text, "notify_via_email" boolean, "notify_on_new_articles" boolean, "notify_on_comments" boolean, "profile_id" integer, "remember_token" character varying(255), "remember_token_expires_at" timestamp, "text_filter_id" character varying(255) DEFAULT '1', "state" character varying(255) DEFAULT 'active', "last_connection" timestamp, "settings" text) [0m
+  [1m[35mSQL (0.5ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35mSQL (0.6ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'schema_migrations'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mSQL (3.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_info'
+ AND schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('104')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('19')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('42')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('59')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('68')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('103')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('99')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('3')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('1')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('70')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('78')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('60')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('35')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('50')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('82')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('41')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('39')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('73')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('40')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('94')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('93')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('95')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('96')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('79')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('87')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('75')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('45')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('38')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('29')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('88')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('57')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('2')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('12')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('37')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('85')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('17')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('80')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('25')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('11')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('33')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('21')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('8')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('30')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('15')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('69')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('49')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('4')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('14')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('53')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('18')
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('90')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('76')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('81')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('36')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('24')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('67')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('47')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('31')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('26')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('43')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('86')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('54')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('77')[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('89')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('91')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('58')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('13')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('5')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('32')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('71')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('102')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('64')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('72')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('16')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('7')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('51')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('6')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('52')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('55')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('27')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('48')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('74')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('22')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('63')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('23')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('34')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('61')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('62')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('100')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('92')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('10')[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('66')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('56')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('65')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('9')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('84')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('44')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('101')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('98')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('83')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('97')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('46')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('28')[0m
